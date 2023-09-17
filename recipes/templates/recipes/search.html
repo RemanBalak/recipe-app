@@ -40,13 +40,7 @@
         width: 100%;
         height: 300px;
         transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      /* Styles for the hover effect */
-      img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        align-items: center;
       }
 
       h2 {
@@ -125,6 +119,12 @@
         float: right;
         margin-top: 14px;
         margin-right: 16px;
+      }
+
+      .centered-image {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
       }
 
       .search-form input[type='text'] {
@@ -219,7 +219,16 @@
       </div>
 
       <!-- Display the chart image -->
-      <img src="data:image/png;base64,{{ chart_data }}" alt="Chart" />
+      <br />
+      <br />
+      <div class="centered-image">
+        <img
+          style="width: 750px"
+          src="data:image/png;base64,{{ chart_data }}"
+          alt="Chart"
+        />
+      </div>
+
       {% else %}
       <p style="text-align: center; font-size: 35px; background-color: #ffe4b5">
         No results found.
