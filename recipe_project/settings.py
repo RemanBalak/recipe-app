@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'recipe_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dc3tcikaoifn0q',
-        'USER': 'midshvghrgaehm',
-        'PASSWORD': 'de0d9ce96b85953432ab862da8fa456f3e7eb013181196fcc488e9e1e8d42f5f',
-        'HOST': 'ec2-44-214-132-149.compute-1.amazonaws.com',
-        'PORT': '5432'
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'qKMmzxH7IWVMLYRBsTVn',
+        'HOST': 'containers-us-west-48.railway.app',
+        'PORT': '6191'
     }
 }
 
