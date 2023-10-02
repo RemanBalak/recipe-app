@@ -12,7 +12,7 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     cooking_time = models.CharField(max_length=10)
     difficulty = models.CharField(max_length=50)
-    pic = models.ImageField(upload_to='media/', null=True, blank=True)
+    pic = models.ImageField(upload_to='media/media', null=True, blank=True)
     recipe_type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='Breakfast')
 
 

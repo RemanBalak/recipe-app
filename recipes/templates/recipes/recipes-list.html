@@ -147,6 +147,16 @@
         background-color: #ffe4b5;
         padding: 10px;
       }
+
+      /* Media query for screens with a maximum width of 768px */
+      @media (max-width: 768px) {
+        .recipe-container {
+          display: block; /* Display recipes one per row */
+          width: 100%; /* Make each recipe card take up the full width */
+          box-sizing: border-box; /* Include padding in the width calculation */
+          margin: 0; /* Remove any default margins */
+        }
+      }
     </style>
   </head>
   <body>
