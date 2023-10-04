@@ -17,8 +17,9 @@
         background-size: cover;
       }
 
+      /* Default styles for the login-container */
       .login-container {
-        max-width: 400px;
+        max-width: 400px; /* Default max-width */
         margin: 100px auto;
         padding: 20px;
         background-color: #fff;
@@ -26,6 +27,13 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         background-color: rgba(120, 39, 39, 0.9);
         color: white;
+      }
+
+      /* Media query for screens with a width less than or equal to 570px */
+      @media screen and (max-width: 570px) {
+        .login-container {
+          max-width: 90%; /* Adjust max-width for screens <= 570px */
+        }
       }
 
       h2 {
