@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
-      /* Add your custom styles here */
+      /* Example styles for the columns */
       body {
         font-family: 'Abel', sans-serif;
         background-color: #f5f5f5;
@@ -29,24 +29,23 @@
         flex-wrap: wrap;
       }
 
+      p,
+      h2 {
+        padding-left: 5px;
+      }
+
       .column {
         width: 25%;
         padding: 10px;
         box-sizing: border-box;
+        align-items: center;
       }
-
       /* Styles for the images */
       img {
         width: 100%;
         height: 300px;
         transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      /* Styles for the hover effect */
-      img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        align-items: center;
       }
 
       h2 {
@@ -55,8 +54,77 @@
         text-align: left;
         margin-bottom: 20px;
       }
+      /* Styles for the recipe details */
+      .recipe-details {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+      }
 
-      /* Styles for the navigation bar */
+      .recipe-details p {
+        margin: 5px 0;
+      }
+      /* Styles for the search form */
+      .search-form {
+        float: right;
+        margin-top: 14px;
+        margin-right: 16px;
+      }
+      .centered-image {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        max-width: 750px;
+        margin: 0 auto; /* Center horizontally on the page */
+      }
+
+      .search-form input[type='text'] {
+        padding: 6px;
+        border: none;
+        border-radius: 4px;
+      }
+      .search-form input[type='submit'] {
+        padding: 6px 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .recipe-container {
+        background-color: #ffe4b5;
+      }
+
+      /* Styles for the hamburger menu icon */
+      .icon {
+        display: none;
+        color: #f2f2f2;
+        float: left;
+        font-size: 24px;
+        padding: 14px 16px;
+        cursor: pointer;
+      }
+
+      /* Existing styles for the top navigation bar */
       .topnav {
         overflow: hidden;
         background-color: #333;
@@ -81,48 +149,126 @@
       .topnav .icon {
         display: none;
       }
+      /* Add animation to the responsive topnav */
+      .topnav.responsive {
+        position: relative;
+        animation: slideDown 0.5s ease forwards;
+      }
 
-      @media screen and (max-width: 600px) {
-        .topnav a:not(:first-child) {
-          display: none;
+      /* Add animation to close the responsive topnav */
+      .topnav.closing {
+        animation: slideUp 0.5s ease forwards;
+      }
+
+      /* Define the slideDown animation */
+      @keyframes slideDown {
+        0% {
+          top: -100px; /* Start from above the screen */
         }
-        .topnav a.icon {
-          float: right;
-          display: block;
+        100% {
+          top: 0; /* End at the top of the screen */
         }
       }
 
-      @media screen and (max-width: 600px) {
+      /* Media query for screens with a maximum width of 600px */
+      @media screen and (max-width: 650px) {
+        .topnav:not(.responsive) a:not(.icon) {
+          display: none;
+        }
+        .topnav:not(.responsive) .icon {
+          float: left;
+          display: block;
+          margin-left: 16px; /* Add margin to push it to the top left */
+        }
+
         .topnav.responsive {
           position: relative;
         }
+
         .topnav.responsive .icon {
           position: absolute;
-          right: 0;
+          left: 10px; /* Adjust the left position as needed */
           top: 0;
+          width: auto; /* Set a fixed width */
         }
+
         .topnav.responsive a {
           float: none;
           display: block;
-          text-align: left;
+          text-align: center; /* Center the text horizontally */
+          padding: 14px 0; /* Add padding to center the text vertically */
         }
       }
 
-      /* Styles for the recipe details */
-      .recipe-details {
-        display: none;
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
+      /* Styles for the search form */
+      .search-form {
+        float: right;
+        margin-top: 14px;
+        margin-right: 16px;
       }
 
-      .recipe-details p {
-        margin: 5px 0;
+      .search-form input[type='text'] {
+        padding: 6px;
+        border: none;
+        border-radius: 4px;
       }
-      .recipe-container {
+
+      .search-form input[type='submit'] {
+        padding: 6px 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      /* Responsive design for screens up to 520px */
+      @media (max-width: 520px) {
+        .column {
+          width: 100%; /* Display 1 recipe per row on smaller screens */
+        }
+      }
+
+      /* Responsive design for screens from 521px to 782px */
+      @media (min-width: 521px) and (max-width: 782px) {
+        .column {
+          width: 50%; /* Display 2 recipes per row on screens from 521px to 782px */
+        }
+      }
+
+      /* Responsive design for screens from 783px to 2000px */
+      @media (min-width: 783px) and (max-width: 2000px) {
+        .column {
+          width: 33.33%; /* Display 3 recipes per row on screens from 783px to 2000px */
+        }
+      }
+
+      /* Responsive design for screens larger than 2000px */
+      @media (min-width: 2001px) {
+        .column {
+          width: 25%; /* Display 4 recipes per row on screens larger than 2000px */
+        }
+      }
+
+      /* Center the container and add margin at the top */
+      .container {
+        max-width: 800px;
+        margin: 20px auto; /* Center the container horizontally and add margin at the top */
+        padding: 20px;
         background-color: #ffe4b5;
-        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+      }
+      /* Button styles */
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin: 10px;
       }
     </style>
   </head>
@@ -133,8 +279,24 @@
       <a href="{% url 'recipes:add-recipe' %}">Add Recipe</a>
       <a href="{% url 'recipes:about-me' %}">About</a>
       <a href="{% url 'recipes:login' %}">Logout</a>
+      <form
+        action="{% url 'recipes:search' %}"
+        method="GET"
+        class="search-form"
+        id="search-form"
+      >
+        {% csrf_token %}
+        <input
+          type="text"
+          name="query"
+          placeholder="Search recipe"
+          value="{{ query }}"
+        />
+        <button type="submit">Search</button>
+      </form>
+
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
+        &#9776;
       </a>
     </nav>
     <h1
@@ -160,5 +322,41 @@
       </div>
       {% endfor %}
     </div>
+    <script>
+      // Function to toggle the visibility of navigation links
+      function myFunction() {
+        var x = document.getElementById('myTopnav');
+        if (x.className === 'topnav') {
+          x.className += ' responsive';
+        } else {
+          x.className = 'topnav closing'; // Add the 'closing' class to trigger the closing animation
+        }
+      }
+
+      // JavaScript to toggle the responsive class and trigger the animation
+      function myFunction() {
+        var x = document.getElementById('myTopnav');
+        var searchBar = document.getElementById('search-form');
+
+        if (x.className === 'topnav') {
+          x.className += ' responsive';
+          searchBar.style.display = 'none'; // Hide the search bar
+        } else {
+          x.className = 'topnav';
+          searchBar.style.display = 'block'; // Show the search bar
+        }
+      }
+    </script>
+    <script>
+      // Function to toggle the visibility of recipe details
+      function toggleDetails(recipeId) {
+        var details = document.getElementById('recipe-details-' + recipeId);
+        if (details.style.display === 'none') {
+          details.style.display = 'block';
+        } else {
+          details.style.display = 'none';
+        }
+      }
+    </script>
   </body>
 </html>

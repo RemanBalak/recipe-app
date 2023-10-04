@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,6 +26,7 @@
           no-repeat fixed;
         background-size: cover;
       }
+      /* Example styles for the columns */
       .row {
         display: flex;
         flex-wrap: wrap;
@@ -34,6 +36,80 @@
         width: 25%;
         padding: 10px;
         box-sizing: border-box;
+        align-items: center;
+      }
+      /* Styles for the images */
+      img {
+        width: 100%;
+        height: 300px;
+        transition: all 0.3s ease;
+        align-items: center;
+      }
+
+      h2 {
+        font-family: 'Abel', sans-serif; /* Change to desired font family */
+        font-size: 24px; /* Change to desired font size */
+        text-align: left;
+        margin-bottom: 20px;
+      }
+      /* Styles for the recipe details */
+      .recipe-details {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+      }
+
+      .recipe-details p {
+        margin: 5px 0;
+      }
+      /* Styles for the search form */
+      .search-form {
+        float: right;
+        margin-top: 14px;
+        margin-right: 16px;
+      }
+      .centered-image {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        max-width: 750px;
+        margin: 0 auto; /* Center horizontally on the page */
+      }
+
+      .search-form input[type='text'] {
+        padding: 6px;
+        border: none;
+        border-radius: 4px;
+      }
+      .search-form input[type='submit'] {
+        padding: 6px 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .recipe-container {
+        background-color: #ffe4b5;
       }
 
       /* Styles for the hamburger menu icon */
@@ -44,27 +120,6 @@
         font-size: 24px;
         padding: 14px 16px;
         cursor: pointer;
-      }
-
-      /* Styles for the images */
-      img {
-        width: 100%;
-        height: 300px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      /* Styles for the hover effect */
-      img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-
-      h2 {
-        font-family: 'Abel', sans-serif; /* Change to desired font family */
-        font-size: 24px; /* Change to desired font size */
-        text-align: left;
-        margin-bottom: 20px;
       }
 
       /* Existing styles for the top navigation bar */
@@ -114,7 +169,7 @@
       }
 
       /* Media query for screens with a maximum width of 600px */
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 650px) {
         .topnav:not(.responsive) a:not(.icon) {
           display: none;
         }
@@ -143,17 +198,6 @@
         }
       }
 
-      .recipe-details p {
-        margin: 5px 0;
-      }
-      /* Styles for the recipe details */
-      .recipe-details {
-        display: none;
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-      }
       /* Styles for the search form */
       .search-form {
         float: right;
@@ -174,20 +218,6 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-      }
-
-      .recipe-container {
-        background-color: #ffe4b5;
-        padding: 10px;
-      }
-
-      /* Default styling for .column */
-      .column {
-        width: 25%; /* By default, display 4 columns in a row */
-        float: left;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 10px; /* Add some spacing between columns */
       }
 
       /* Responsive design for screens up to 520px */
@@ -218,18 +248,32 @@
         }
       }
 
-      /* Default styling for .column img */
-      .column img {
-        width: 100%; /* Make the image take up the full width of the container */
-        height: 600px; /* Make the image take up the full height of the container */
-        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+      /* Center the container and add margin at the top */
+      .container {
+        max-width: 800px;
+        margin: 20px auto; /* Center the container horizontally and add margin at the top */
+        padding: 20px;
+        background-color: #ffe4b5;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
       }
-
-      /* Media query for screens with a maximum width of 620px */
-      @media (max-width: 520px) {
-        .column img {
-          height: auto; /* Reset the height for images below 520px */
-        }
+      /* Button styles */
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin: 10px;
+      }
+      /* Styles for the images */
+      img {
+        width: 100%;
+        height: 300px;
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
     </style>
     <nav class="topnav" id="myTopnav">
