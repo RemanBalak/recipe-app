@@ -109,6 +109,9 @@
         }
       }
 
+      .recipe-details p {
+        margin: 5px 0;
+      }
       /* Styles for the recipe details */
       .recipe-details {
         display: none;
@@ -116,10 +119,6 @@
         padding: 10px;
         background-color: #f9f9f9;
         border: 1px solid #ddd;
-      }
-
-      .recipe-details p {
-        margin: 5px 0;
       }
       /* Styles for the search form */
       .search-form {
@@ -148,13 +147,54 @@
         padding: 10px;
       }
 
-      /* Media query for screens with a maximum width of 768px */
-      @media (max-width: 768px) {
-        .recipe-container {
-          display: block; /* Display recipes one per row */
-          width: 100%; /* Make each recipe card take up the full width */
-          box-sizing: border-box; /* Include padding in the width calculation */
-          margin: 0; /* Remove any default margins */
+      /* Default styling for .column */
+      .column {
+        width: 25%; /* By default, display 4 columns in a row */
+        float: left;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 10px; /* Add some spacing between columns */
+      }
+
+      /* Responsive design for screens up to 520px */
+      @media (max-width: 520px) {
+        .column {
+          width: 100%; /* Display 1 recipe per row on smaller screens */
+        }
+      }
+
+      /* Responsive design for screens from 521px to 782px */
+      @media (min-width: 521px) and (max-width: 782px) {
+        .column {
+          width: 50%; /* Display 2 recipes per row on screens from 521px to 782px */
+        }
+      }
+
+      /* Responsive design for screens from 783px to 2000px */
+      @media (min-width: 783px) and (max-width: 2000px) {
+        .column {
+          width: 33.33%; /* Display 3 recipes per row on screens from 783px to 2000px */
+        }
+      }
+
+      /* Responsive design for screens larger than 2000px */
+      @media (min-width: 2001px) {
+        .column {
+          width: 25%; /* Display 4 recipes per row on screens larger than 2000px */
+        }
+      }
+
+      /* Default styling for .column img */
+      .column img {
+        width: 100%; /* Make the image take up the full width of the container */
+        height: 600px; /* Make the image take up the full height of the container */
+        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+      }
+
+      /* Media query for screens with a maximum width of 620px */
+      @media (max-width: 520px) {
+        .column img {
+          height: auto; /* Reset the height for images below 520px */
         }
       }
     </style>
