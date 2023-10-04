@@ -9,66 +9,28 @@
     />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
-      /* Add your custom styles here */
-      /* Example styles for the columns */
+
+      /* Reset default margin and padding */
+      body,
+      h1,
+      h3,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
       body {
         font-family: 'Abel', sans-serif;
         background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: url("{% static '../static/home-background.jpg' %}")
-          no-repeat fixed;
-        background-size: cover;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
+        color: #333;
+        text-align: center;
       }
 
-      .column {
-        width: 25%;
-        padding: 10px;
-        box-sizing: border-box;
-      }
-
-      /* Styles for the hamburger menu icon */
-      .icon {
-        display: none;
-        color: #f2f2f2;
-        float: left;
-        font-size: 24px;
-        padding: 14px 16px;
-        cursor: pointer;
-      }
-
-      /* Styles for the images */
-      img {
-        width: 100%;
-        height: 300px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      /* Styles for the hover effect */
-      img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-
-      h2 {
-        font-family: 'Abel', sans-serif; /* Change to desired font family */
-        font-size: 24px; /* Change to desired font size */
-        text-align: left;
-        margin-bottom: 20px;
-      }
-
-      /* Existing styles for the top navigation bar */
+      /* Styles for the top navigation bar */
       .topnav {
-        overflow: hidden;
         background-color: #333;
+        overflow: hidden;
+        height: 55px;
       }
 
       .topnav a {
@@ -78,7 +40,6 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        font-size: 17px;
         font-family: 'Abel', sans-serif;
       }
 
@@ -90,6 +51,7 @@
       .topnav .icon {
         display: none;
       }
+
       /* Add animation to the responsive topnav */
       .topnav.responsive {
         position: relative;
@@ -109,352 +71,68 @@
         100% {
           top: 0; /* End at the top of the screen */
         }
-      }
-
-      /* Media query for screens with a maximum width of 600px */
-      @media screen and (max-width: 600px) {
-        .topnav:not(.responsive) a:not(.icon) {
-          display: none;
-        }
-        .topnav:not(.responsive) .icon {
-          float: left;
-          display: block;
-          margin-left: 16px; /* Add margin to push it to the top left */
-        }
-
-        .topnav.responsive {
-          position: relative;
-        }
-
-        .topnav.responsive .icon {
-          position: absolute;
-          left: 10px; /* Adjust the left position as needed */
-          top: 0;
-          width: auto; /* Set a fixed width */
-        }
-
-        .topnav.responsive a {
-          float: none;
-          display: block;
-          text-align: center; /* Center the text horizontally */
-          padding: 14px 0; /* Add padding to center the text vertically */
-        }
-      }
-
-      .recipe-details p {
-        margin: 5px 0;
-      }
-      /* Styles for the recipe details */
-      .recipe-details {
-        display: none;
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-      }
-      /* Styles for the search form */
-      .search-form {
-        float: right;
-        margin-top: 14px;
-        margin-right: 16px;
-      }
-
-      .search-form input[type='text'] {
-        padding: 6px;
-        border: none;
-        border-radius: 4px;
-      }
-
-      .search-form input[type='submit'] {
-        padding: 6px 10px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      .recipe-container {
-        background-color: #ffe4b5;
-        padding: 10px;
-      }
-
-      /* Default styling for .column */
-      .column {
-        width: 25%; /* By default, display 4 columns in a row */
-        float: left;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 10px; /* Add some spacing between columns */
-      }
-
-      /* Responsive design for screens up to 520px */
-      @media (max-width: 520px) {
-        .column {
-          width: 100%; /* Display 1 recipe per row on smaller screens */
-        }
-      }
-
-      /* Responsive design for screens from 521px to 782px */
-      @media (min-width: 521px) and (max-width: 782px) {
-        .column {
-          width: 50%; /* Display 2 recipes per row on screens from 521px to 782px */
-        }
-      }
-
-      /* Responsive design for screens from 783px to 2000px */
-      @media (min-width: 783px) and (max-width: 2000px) {
-        .column {
-          width: 33.33%; /* Display 3 recipes per row on screens from 783px to 2000px */
-        }
-      }
-
-      /* Responsive design for screens larger than 2000px */
-      @media (min-width: 2001px) {
-        .column {
-          width: 25%; /* Display 4 recipes per row on screens larger than 2000px */
-        }
-      }
-
-      /* Default styling for .column img */
-      .column img {
-        width: 100%; /* Make the image take up the full width of the container */
-        height: 600px; /* Make the image take up the full height of the container */
-        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
-      }
-
-      /* Media query for screens with a maximum width of 620px */
-      @media (max-width: 520px) {
-        .column img {
-          height: auto; /* Reset the height for images below 520px */
-        }
-      }
-    </style>
-    <style>
-      /* Global Styles */
-      body {
-        font-family: 'Abel', sans-serif;
-        background-color: #d67070c1;
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: url("{% static '../static/home-background.jpg' %}")
-          no-repeat fixed;
-        background-size: cover;
       }
 
       .container {
         max-width: 800px;
+        margin: 20px auto 0; /* Add margin-top of 20px and auto for centering horizontally */
         padding: 20px;
         background-color: #ffe4b5;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        position: absolute;
         border-radius: 8px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      /* Set a minimum width for the container when the screen is smaller than 600px */
-      @media (max-width: 600px) {
-        .container {
-          min-width: 300px; /* Adjust this value as needed */
-        }
-      }
-
-      /* Optional: Add other styles for larger screens */
-      @media (min-width: 768px) {
-        /* Adjust styles for screens that are 768px wide or larger */
-        .container {
-          padding: 20px;
-          min-width: 400px; /* Adjust this value as needed */
-        }
-      }
-
-      /* Remove the transform when the screen is below 550px */
-      @media (max-width: 550px) {
-        .container {
-          transform: none;
-        }
-      }
-      h2 {
-        font-size: 24px;
-        color: #333;
-      }
-
-      p {
-        font-size: 16px;
-        color: #666;
-      }
-
-      a {
-        color: #50c92c;
-        text-decoration: none;
-      }
-
-      /* Styles for the hamburger menu icon */
-      .icon {
-        display: none;
-        color: #f2f2f2;
-        float: left;
-        font-size: 24px;
-        padding: 14px 16px;
-        cursor: pointer;
-      }
-
-      /* Existing styles for the top navigation bar */
-      .topnav {
-        overflow: hidden;
-        background-color: #333;
-      }
-
-      .topnav a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
         text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        font-family: 'Abel', sans-serif;
       }
 
-      .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-      }
-
-      .topnav .icon {
-        display: none;
-      }
-      /* Add animation to the responsive topnav */
-      .topnav.responsive {
-        position: relative;
-        animation: slideDown 0.5s ease forwards;
-      }
-
-      /* Add animation to close the responsive topnav */
-      .topnav.closing {
-        animation: slideUp 0.5s ease forwards;
-      }
-
-      /* Define the slideDown animation */
-      @keyframes slideDown {
-        0% {
-          top: -100px; /* Start from above the screen */
-        }
-        100% {
-          top: 0; /* End at the top of the screen */
-        }
-      }
-
-      /* Media query for screens with a maximum width of 600px */
-      @media screen and (max-width: 600px) {
-        .topnav:not(.responsive) a:not(.icon) {
-          display: none;
-        }
-        .topnav:not(.responsive) .icon {
-          float: left;
-          display: block;
-          margin-left: 16px; /* Add margin to push it to the top left */
-        }
-
-        .topnav.responsive {
-          position: relative;
-        }
-
-        .topnav.responsive .icon {
-          position: absolute;
-          left: 10px; /* Adjust the left position as needed */
-          top: 0;
-          width: auto; /* Set a fixed width */
-        }
-
-        .topnav.responsive a {
-          float: none;
-          display: block;
-          text-align: center; /* Center the text horizontally */
-          padding: 14px 0; /* Add padding to center the text vertically */
-        }
-      }
-
-      /* Modal Styles */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-
-      .modal-content {
-        background-color: #fff;
-        margin: 15% auto;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        width: 80%;
-      }
-
-      .modal-close {
-        float: right;
-        font-size: 24px;
-        cursor: pointer;
-      }
-
-      /* Button Styles */
+      /* Button styles */
       .button {
-        background-color: #177b17;
-        color: #fff;
+        display: inline-block;
         padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
         text-decoration: none;
+        border-radius: 4px;
+        margin: 10px;
       }
 
-      .button:hover {
-        background-color: #114911;
+      /* Optional: Media query for smaller screens */
+      @media screen and (max-width: 600px) {
+        .container {
+          padding: 10px;
+          max-width: 90%;
+          margin: 0 auto;
+          height: auto;
+        }
       }
     </style>
   </head>
   <body>
-    <nav class="topnav" id="myTopnav">
+    <!-- Navigation bar -->
+    <nav class="topnav responsive" id="myTopnav">
       <a href="{% url 'recipes:home' %}">Home</a>
       <a href="{% url 'recipes:list' %}">Recipes</a>
       <a href="{% url 'recipes:add-recipe' %}">Add Recipe</a>
       <a href="{% url 'recipes:about-me' %}">About</a>
       <a href="{% url 'recipes:login' %}">Logout</a>
-
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         &#9776;
-        <!-- Hamburger menu icon -->
       </a>
     </nav>
 
     <!-- Content of the About Me page -->
     <div class="container">
-      <h1>RecipeHub - Where flavor meets Simplicity</h1>
+      <h1>RecipeHub - Where Flavor Meets Simplicity</h1>
       <p>
         RecipeHub is a delightful recipe collection application developed using
         Django and Python, and it's hosted on Heroku. Time to start your
         culinary journey!
       </p>
-      <h3>A personal note from Reman:</h3>
+      <h3>A Personal Note from Reman:</h3>
       <p>
         For me, there's nothing quite like the thrill of taking software and
         making it perform better, look more elegant, and run like a dream. I'm
         genuinely excited about the opportunity to be a part of your team and
         can't wait to collaborate and bring my expertise to the table.
-        <br />
-        <br />
+        <br /><br />
         <a href="https://remanbalakdev.com/" target="_blank" class="button"
           >Portfolio</a
         >
@@ -466,6 +144,7 @@
         >
       </p>
     </div>
+
     <script>
       // Function to toggle the visibility of navigation links
       function myFunction() {
@@ -474,20 +153,6 @@
           x.className += ' responsive';
         } else {
           x.className = 'topnav closing'; // Add the 'closing' class to trigger the closing animation
-        }
-      }
-
-      // JavaScript to toggle the responsive class and trigger the animation
-      function myFunction() {
-        var x = document.getElementById('myTopnav');
-        var searchBar = document.getElementById('search-form');
-
-        if (x.className === 'topnav') {
-          x.className += ' responsive';
-          searchBar.style.display = 'none'; // Hide the search bar
-        } else {
-          x.className = 'topnav';
-          searchBar.style.display = 'block'; // Show the search bar
         }
       }
     </script>
