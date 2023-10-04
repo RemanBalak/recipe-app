@@ -7,7 +7,229 @@
       href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
       rel="stylesheet"
     />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+      /* Add your custom styles here */
+      /* Example styles for the columns */
+      body {
+        font-family: 'Abel', sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url("{% static '../static/home-background.jpg' %}")
+          no-repeat fixed;
+        background-size: cover;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
 
+      .column {
+        width: 25%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      /* Styles for the hamburger menu icon */
+      .icon {
+        display: none;
+        color: #f2f2f2;
+        float: left;
+        font-size: 24px;
+        padding: 14px 16px;
+        cursor: pointer;
+      }
+
+      /* Styles for the images */
+      img {
+        width: 100%;
+        height: 300px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      /* Styles for the hover effect */
+      img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      h2 {
+        font-family: 'Abel', sans-serif; /* Change to desired font family */
+        font-size: 24px; /* Change to desired font size */
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      /* Existing styles for the top navigation bar */
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        font-family: 'Abel', sans-serif;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav .icon {
+        display: none;
+      }
+      /* Add animation to the responsive topnav */
+      .topnav.responsive {
+        position: relative;
+        animation: slideDown 0.5s ease forwards;
+      }
+
+      /* Add animation to close the responsive topnav */
+      .topnav.closing {
+        animation: slideUp 0.5s ease forwards;
+      }
+
+      /* Define the slideDown animation */
+      @keyframes slideDown {
+        0% {
+          top: -100px; /* Start from above the screen */
+        }
+        100% {
+          top: 0; /* End at the top of the screen */
+        }
+      }
+
+      /* Media query for screens with a maximum width of 600px */
+      @media screen and (max-width: 600px) {
+        .topnav:not(.responsive) a:not(.icon) {
+          display: none;
+        }
+        .topnav:not(.responsive) .icon {
+          float: left;
+          display: block;
+          margin-left: 16px; /* Add margin to push it to the top left */
+        }
+
+        .topnav.responsive {
+          position: relative;
+        }
+
+        .topnav.responsive .icon {
+          position: absolute;
+          left: 10px; /* Adjust the left position as needed */
+          top: 0;
+          width: auto; /* Set a fixed width */
+        }
+
+        .topnav.responsive a {
+          float: none;
+          display: block;
+          text-align: center; /* Center the text horizontally */
+          padding: 14px 0; /* Add padding to center the text vertically */
+        }
+      }
+
+      .recipe-details p {
+        margin: 5px 0;
+      }
+      /* Styles for the recipe details */
+      .recipe-details {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+      }
+      /* Styles for the search form */
+      .search-form {
+        float: right;
+        margin-top: 14px;
+        margin-right: 16px;
+      }
+
+      .search-form input[type='text'] {
+        padding: 6px;
+        border: none;
+        border-radius: 4px;
+      }
+
+      .search-form input[type='submit'] {
+        padding: 6px 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .recipe-container {
+        background-color: #ffe4b5;
+        padding: 10px;
+      }
+
+      /* Default styling for .column */
+      .column {
+        width: 25%; /* By default, display 4 columns in a row */
+        float: left;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 10px; /* Add some spacing between columns */
+      }
+
+      /* Responsive design for screens up to 520px */
+      @media (max-width: 520px) {
+        .column {
+          width: 100%; /* Display 1 recipe per row on smaller screens */
+        }
+      }
+
+      /* Responsive design for screens from 521px to 782px */
+      @media (min-width: 521px) and (max-width: 782px) {
+        .column {
+          width: 50%; /* Display 2 recipes per row on screens from 521px to 782px */
+        }
+      }
+
+      /* Responsive design for screens from 783px to 2000px */
+      @media (min-width: 783px) and (max-width: 2000px) {
+        .column {
+          width: 33.33%; /* Display 3 recipes per row on screens from 783px to 2000px */
+        }
+      }
+
+      /* Responsive design for screens larger than 2000px */
+      @media (min-width: 2001px) {
+        .column {
+          width: 25%; /* Display 4 recipes per row on screens larger than 2000px */
+        }
+      }
+
+      /* Default styling for .column img */
+      .column img {
+        width: 100%; /* Make the image take up the full width of the container */
+        height: 600px; /* Make the image take up the full height of the container */
+        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+      }
+
+      /* Media query for screens with a maximum width of 620px */
+      @media (max-width: 520px) {
+        .column img {
+          height: auto; /* Reset the height for images below 520px */
+        }
+      }
+    </style>
     <style>
       /* Global Styles */
       body {
@@ -36,6 +258,28 @@
         transform: translate(-50%, -50%);
       }
 
+      /* Set a minimum width for the container when the screen is smaller than 600px */
+      @media (max-width: 600px) {
+        .container {
+          min-width: 300px; /* Adjust this value as needed */
+        }
+      }
+
+      /* Optional: Add other styles for larger screens */
+      @media (min-width: 768px) {
+        /* Adjust styles for screens that are 768px wide or larger */
+        .container {
+          padding: 20px;
+          min-width: 400px; /* Adjust this value as needed */
+        }
+      }
+
+      /* Remove the transform when the screen is below 550px */
+      @media (max-width: 550px) {
+        .container {
+          transform: none;
+        }
+      }
       h2 {
         font-size: 24px;
         color: #333;
@@ -51,24 +295,90 @@
         text-decoration: none;
       }
 
-      /* Navigation bar Styles */
+      /* Styles for the hamburger menu icon */
+      .icon {
+        display: none;
+        color: #f2f2f2;
+        float: left;
+        font-size: 24px;
+        padding: 14px 16px;
+        cursor: pointer;
+      }
+
+      /* Existing styles for the top navigation bar */
       .topnav {
-        background-color: #333;
         overflow: hidden;
+        background-color: #333;
       }
 
       .topnav a {
         float: left;
         display: block;
-        color: #fff;
+        color: #f2f2f2;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
+        font-family: 'Abel', sans-serif;
       }
 
       .topnav a:hover {
         background-color: #ddd;
+        color: black;
+      }
+
+      .topnav .icon {
+        display: none;
+      }
+      /* Add animation to the responsive topnav */
+      .topnav.responsive {
+        position: relative;
+        animation: slideDown 0.5s ease forwards;
+      }
+
+      /* Add animation to close the responsive topnav */
+      .topnav.closing {
+        animation: slideUp 0.5s ease forwards;
+      }
+
+      /* Define the slideDown animation */
+      @keyframes slideDown {
+        0% {
+          top: -100px; /* Start from above the screen */
+        }
+        100% {
+          top: 0; /* End at the top of the screen */
+        }
+      }
+
+      /* Media query for screens with a maximum width of 600px */
+      @media screen and (max-width: 600px) {
+        .topnav:not(.responsive) a:not(.icon) {
+          display: none;
+        }
+        .topnav:not(.responsive) .icon {
+          float: left;
+          display: block;
+          margin-left: 16px; /* Add margin to push it to the top left */
+        }
+
+        .topnav.responsive {
+          position: relative;
+        }
+
+        .topnav.responsive .icon {
+          position: absolute;
+          left: 10px; /* Adjust the left position as needed */
+          top: 0;
+          width: auto; /* Set a fixed width */
+        }
+
+        .topnav.responsive a {
+          float: none;
+          display: block;
+          text-align: center; /* Center the text horizontally */
+          padding: 14px 0; /* Add padding to center the text vertically */
+        }
       }
 
       /* Modal Styles */
@@ -116,14 +426,18 @@
     </style>
   </head>
   <body>
-    <!-- Navigation bar -->
-    <div class="topnav">
+    <nav class="topnav" id="myTopnav">
       <a href="{% url 'recipes:home' %}">Home</a>
       <a href="{% url 'recipes:list' %}">Recipes</a>
       <a href="{% url 'recipes:add-recipe' %}">Add Recipe</a>
       <a href="{% url 'recipes:about-me' %}">About</a>
       <a href="{% url 'recipes:login' %}">Logout</a>
-    </div>
+
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        &#9776;
+        <!-- Hamburger menu icon -->
+      </a>
+    </nav>
 
     <!-- Content of the About Me page -->
     <div class="container">
@@ -152,5 +466,30 @@
         >
       </p>
     </div>
+    <script>
+      // Function to toggle the visibility of navigation links
+      function myFunction() {
+        var x = document.getElementById('myTopnav');
+        if (x.className === 'topnav') {
+          x.className += ' responsive';
+        } else {
+          x.className = 'topnav closing'; // Add the 'closing' class to trigger the closing animation
+        }
+      }
+
+      // JavaScript to toggle the responsive class and trigger the animation
+      function myFunction() {
+        var x = document.getElementById('myTopnav');
+        var searchBar = document.getElementById('search-form');
+
+        if (x.className === 'topnav') {
+          x.className += ' responsive';
+          searchBar.style.display = 'none'; // Hide the search bar
+        } else {
+          x.className = 'topnav';
+          searchBar.style.display = 'block'; // Show the search bar
+        }
+      }
+    </script>
   </body>
 </html>
