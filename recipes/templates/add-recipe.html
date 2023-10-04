@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+      /* Example styles for the columns */
       body {
         font-family: 'Abel', sans-serif;
         background-color: #f5f5f5;
@@ -91,10 +92,21 @@
         text-align: left;
         margin-bottom: 20px;
       }
-      /* Styles for the navigation bar */
+      /* Styles for the hamburger menu icon */
+      .icon {
+        display: none;
+        color: #f2f2f2;
+        float: left;
+        font-size: 24px;
+        padding: 14px 16px;
+        cursor: pointer;
+      }
+
+      /* Existing styles for the top navigation bar */
       .topnav {
         overflow: hidden;
         background-color: #333;
+        z-index: 1000;
       }
 
       .topnav a {
@@ -116,30 +128,54 @@
       .topnav .icon {
         display: none;
       }
+      /* Add animation to the responsive topnav */
+      .topnav.responsive {
+        position: relative;
+        animation: slideDown 0.5s ease forwards;
+      }
 
-      @media screen and (max-width: 600px) {
-        .topnav a:not(:first-child) {
-          display: none;
+      /* Add animation to close the responsive topnav */
+      .topnav.closing {
+        animation: slideUp 0.5s ease forwards;
+      }
+
+      /* Define the slideDown animation */
+      @keyframes slideDown {
+        0% {
+          top: -100px; /* Start from above the screen */
         }
-        .topnav a.icon {
-          float: right;
-          display: block;
+        100% {
+          top: 0; /* End at the top of the screen */
         }
       }
 
-      @media screen and (max-width: 600px) {
+      /* Media query for screens with a maximum width of 600px */
+      @media screen and (max-width: 650px) {
+        .topnav:not(.responsive) a:not(.icon) {
+          display: none;
+        }
+        .topnav:not(.responsive) .icon {
+          float: left;
+          display: block;
+          margin-left: 16px; /* Add margin to push it to the top left */
+        }
+
         .topnav.responsive {
           position: relative;
         }
+
         .topnav.responsive .icon {
           position: absolute;
-          right: 0;
+          left: 10px; /* Adjust the left position as needed */
           top: 0;
+          width: auto; /* Set a fixed width */
         }
+
         .topnav.responsive a {
           float: none;
           display: block;
-          text-align: left;
+          text-align: center; /* Center the text horizontally */
+          padding: 14px 0; /* Add padding to center the text vertically */
         }
       }
 
@@ -169,13 +205,29 @@
   <body>
     <!-- Navigation bar -->
     <nav class="topnav" id="myTopnav">
-      <a href="{% url 'recipes:home' %}" class="active">Home</a>
+      <a href="{% url 'recipes:home' %}">Home</a>
       <a href="{% url 'recipes:list' %}">Recipes</a>
       <a href="{% url 'recipes:add-recipe' %}">Add Recipe</a>
       <a href="{% url 'recipes:about-me' %}">About</a>
       <a href="{% url 'recipes:login' %}">Logout</a>
+      <form
+        action="{% url 'recipes:search' %}"
+        method="GET"
+        class="search-form"
+        id="search-form"
+      >
+        {% csrf_token %}
+        <input
+          type="text"
+          name="query"
+          placeholder="Search recipe"
+          value="{{ query }}"
+        />
+        <button type="submit">Search</button>
+      </form>
+
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
+        &#9776;
       </a>
     </nav>
     <div class="container">
@@ -267,5 +319,30 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      // Function to toggle the visibility of navigation links
+      function myFunction() {
+        var x = document.getElementById('myTopnav');
+        if (x.className === 'topnav') {
+          x.className += ' responsive';
+        } else {
+          x.className = 'topnav closing'; // Add the 'closing' class to trigger the closing animation
+        }
+      }
+
+      // JavaScript to toggle the responsive class and trigger the animation
+      function myFunction() {
+        var x = document.getElementById('myTopnav');
+        var searchBar = document.getElementById('search-form');
+
+        if (x.className === 'topnav') {
+          x.className += ' responsive';
+          searchBar.style.display = 'none'; // Hide the search bar
+        } else {
+          x.className = 'topnav';
+          searchBar.style.display = 'block'; // Show the search bar
+        }
+      }
+    </script>
   </body>
 </html>
